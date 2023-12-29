@@ -2,21 +2,19 @@
  * @param {string} s
  * @return {boolean}
  */
-var isPalindrome = function(s) {
-  const searchBlank = /^\s*$/;
-  const searchNotEnglish = /[^a-zA-Z0-9]/g;
+const isPalindrome = function(s) {
+  s = s.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
+  
+  let left = 0;
+  let right = s.length - 1;
 
-  if (!!s.match(searchBlank)) return true;
-
-  const newString = s.replace(searchNotEnglish,'').toLowerCase();
-  const qoutient  = Math.floor(newString.length / 2);
-
-  for (let i = 0; i < qoutient; i++) {
-
-    if (newString[i] !== newString[newString.length - (i+1)]) {
+  while (left < right) {
+    if (s[left] !== s[right]) {
       return false;
     }
+    left++
+    right--
   }
-  
+
   return true;
 };
