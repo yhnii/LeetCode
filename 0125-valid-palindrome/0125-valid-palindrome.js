@@ -3,18 +3,14 @@
  * @return {boolean}
  */
 const isPalindrome = function(s) {
-  s = s.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
-  
-  let left = 0;
-  let right = s.length - 1;
+  const newString = s.replace(/[^a-zA-Z0-9]/g,'').toLowerCase();
+  const qoutient  = Math.floor(newString.length / 2);
 
-  while (left < right) {
-    if (s[left] !== s[right]) {
+  for (let i = 0; i < qoutient; i++) {
+
+    if (newString[i] !== newString[newString.length - (i+1)]) {
       return false;
     }
-    left++
-    right--
   }
-
   return true;
 };
